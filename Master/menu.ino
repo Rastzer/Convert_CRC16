@@ -8,7 +8,7 @@ void menu() {
       aktifMenu = 1;
       break;
     case 2:
-      Serial.println("Pilih polynomial :\n1.CDMA2000\n2.CCITT - FALSE\n3.XMODEM");
+      Serial.println("Pilih polynomial :\n1.ARC\n2.CCITT - FALSE\n3.XMODEM");
       Serial.println("===========================================");
       comComp = false;
       inString = "";
