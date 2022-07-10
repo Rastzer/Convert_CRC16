@@ -1,5 +1,5 @@
-String inString = "", massage;
-bool comComp = false;
+String inString = "", massage = "", lastString = "", strData = "", polynom = "";
+bool comComp = false, parsing = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -8,10 +8,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (comComp == true) {
-    massage = inString;
-    Serial.print("Code : " + massage + "\n");
+  phars();
+  if (parsing == true) {
+    Serial.print("Polynome : ");
+    Serial.println(polynom);
+    Serial.println("===========================================");
+    Serial.print("Codeword : ");
+    Serial.println(massage);
+    Serial.println("===========================================");
     inString = "";
-    comComp = false;
+    parsing = false;
+  }
+  else {
+    polynom = "";
+    massage = "";
   }
 }
