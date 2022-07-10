@@ -1,15 +1,15 @@
 void phars() {
   if (comComp == true) {
     if (aktifMenu == 1) {
-      massage = inString;
+      massage += inString;
       massage.toCharArray(str, massage.length());
-      Serial.print("Code : " + massage + "\n");
+      Serial.println("Code : " + massage);
       Serial.print("===========================================\n");
       aktifMenu = 2;
     }
     if (aktifMenu == 3) {
       if (inString.toInt() == 1) {
-        cdma2000();
+        arc();
         pilihCRC = 1;
         aktifMenu = 4;
       }
@@ -34,16 +34,31 @@ void phars() {
         crc.reset();
         Serial.print("Mengirim CRC-16 : ");
         if (pilihCRC == 1) {
-          cdma2000();
-          mySerial.println(crc.getCRC(), HEX);
+          arc();
+          massage.remove(massage.length() - 1, 2);
+          mySerial.print("$ARC&");
+          mySerial.print(massage);
+          mySerial.print(crc.getCRC(), HEX);
+          mySerial.print("\n");
+          //mySerial.println("$");
         }
         if (pilihCRC == 2) {
           ccittFalse();
-          mySerial.println(crc.getCRC(), HEX);
+          massage.remove(massage.length() - 1, 2);
+          mySerial.print("$CCITT-FALSE&");
+          mySerial.print(massage);
+          mySerial.print(crc.getCRC(), HEX);
+          mySerial.print("\n");
+          //mySerial.println("$");
         }
         if (pilihCRC == 3) {
           xmodem();
-          mySerial.println(crc.getCRC(), HEX);
+          massage.remove(massage.length() - 1, 2);
+          mySerial.print("$XMODEM&");
+          mySerial.print(massage);
+          mySerial.print(crc.getCRC(), HEX);
+          mySerial.print("\n");
+          //mySerial.println("$");
         }
         Serial.println("===========================================");
         crc.reset();
