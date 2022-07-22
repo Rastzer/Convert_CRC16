@@ -38,7 +38,11 @@ void arc() {
   crc.setReverseIn(true);
   crc.setReverseOut(true);
   crc.add((uint8_t *) str, massage.length() - 1);
-  Serial.print("CRC-16/ARC : ");
-  Serial.println(crc.getCRC(), HEX);
-  Serial.println(crc.count());
+  CRC = crc.getCRC();
+  Serial.println("Using Polynomial : 0x8005");
+  Serial.println("StartXOR         : 0x0000");
+  Serial.println("EndXOR           : 0x0000");
+  Serial.println("ReverseIn        : true");
+  Serial.println("ReverseOut       : true");
+  Serial.print("===========================================\n");
 }
