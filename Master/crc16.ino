@@ -7,11 +7,11 @@ SoftwareSerial mySerial(2, 3);
 CRC16 crc;
 
 char str[50];
-
 int aktifMenu = 0, pilihCRC = 0;
 String code = "";
+String CRC;
 
-String inString = "", massage = "";
+String inString = "", massage = "", hex = "";
 bool comComp = false;
 
 void setup() {
@@ -23,5 +23,4 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   menu();
-  phars();
 }
